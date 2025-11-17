@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'Merriweather';
+  src: url('/fonts/Merriweather.ttf') format('truetype-variations'); /* Especificidade para variable font */
+  font-weight: 300 900;
+  font-style: normal;
+}
+
+:root {
+  --color-green: #75C066;
+  --color-brown: #70655A;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-off-white: #FCFEF2;
+
+  --font-primary: 'Merriweather', serif;
+}
+
+body {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-family: var(--font-primary);
+  margin: 0;
+}
