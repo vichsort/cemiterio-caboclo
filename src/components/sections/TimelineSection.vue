@@ -3,27 +3,45 @@ import { ref, computed } from 'vue'
 
 const timelineEvents = [
   {
-    year: '1912',
-    title: 'O Início do Conflito',
-    description: 'Contexto histórico inicial da região e os primeiros movimentos que levaram à consolidação do espaço sagrado.',
+    year: '1856',
+    title: 'As Raízes',
+    description: 'Nascimento de Miguel Domingos Soares Fragoso em Rio Negro (PR). O início da jornada daquele que se tornaria um líder militar, religioso e pioneiro da região.',
     image: '/green.png' 
   },
   {
-    year: '1935',
-    title: 'A Consagração do Solo',
-    description: 'Momento em que o espaço foi oficialmente delimitado pela comunidade local como um campo santo.',
+    year: '1893',
+    title: 'A Revolução Federalista',
+    description: 'Aos 40 anos, adere à causa federalista. Como Major, lidera o batalhão de voluntários "Dr. Pacheco" e participa do histórico cerco da Lapa.',
     image: '/green.png'
   },
   {
-    year: '1960',
-    title: 'Preservação Cultural',
-    description: 'Início dos esforços para manter as tradições e a memória dos que ali repousam, resistindo ao tempo.',
+    year: '1894',
+    title: 'Comandante-em-Chefe',
+    description: 'Eleito por seus pares para comandar o ataque à Lagoa Vermelha. Liderou a estratégica e difícil travessia do Rio Uruguai, protegendo a retaguarda das tropas.',
     image: '/green.png'
   },
   {
-    year: '2024',
-    title: 'O Reencontro',
-    description: 'O projeto de revitalização e reconhecimento histórico dentro do campus do IFC Concórdia.',
+    year: '1900',
+    title: 'O Pioneirismo',
+    description: 'Estabelece-se nas margens do lajeado que hoje leva seu nome (Rio Fragoso), fundando o primeiro núcleo habitado do Alto Vale do Rio Uruguai Catarinense.',
+    image: '/green.png'
+  },
+  {
+    year: '1910',
+    title: 'Fé e Cura',
+    description: 'Constrói uma capela e atua como curandeiro (homeopata) e líder religioso. É neste período que teria tido contato com o monge José Maria.',
+    image: '/green.png'
+  },
+  {
+    year: '1912',
+    title: 'O Contestado',
+    description: 'Citado no inquérito da Batalha do Irani como "General Fanático". Apesar da fama, depôs provando não ter combatido ao lado do monge, discordando da crença de "imunidade às balas".',
+    image: '/green.png'
+  },
+  {
+    year: '1914',
+    title: 'O Legado: Cemitério Caboclo',
+    description: 'Falece o Coronel Fragoso. Seu enterro inaugura o cemitério, hoje Patrimônio Cultural de Concórdia, onde repousam as famílias fundadoras do município.',
     image: '/green.png'
   }
 ]

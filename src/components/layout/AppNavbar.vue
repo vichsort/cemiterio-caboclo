@@ -1,22 +1,19 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { RouterLink } from 'vue-router' // Boa prática importar, embora auto-detectado
+import { RouterLink } from 'vue-router'
 
 const isDropdownOpen = ref(false)
 const dropdownRef = ref(null)
 
-// DEFINIÇÃO DAS ROTAS
-// Note que trocamos 'href' por 'to'.
-// 'to' aceita string ou objeto de rota.
 const navLinks = [
   { text: 'Início', to: '/' },
-  { text: 'Cultura', to: '/#cultura' }, // Exemplo de âncora (explicarei abaixo)
+  { text: 'Cultura', to: '/#cultura' },
   { text: 'Linha Temporal', to: '/timeline' },
   { text: 'Localização', to: '/#localizacao' }
 ]
 
 const dropdownLinks = [
-  { text: 'Fontes', to: '/fontes' }, // Supondo rotas futuras
+  { text: 'Fontes', to: '/fontes' },
   { text: 'Contato', to: '/contato' },
   { text: 'Projeto', to: '/projeto' }
 ]
@@ -88,7 +85,6 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* Mantive todo o seu CSS original, pois é clean e funcional */
 .navbar {
   background-color: var(--color-white);
   padding: 1rem;
@@ -112,7 +108,7 @@ onUnmounted(() => {
 .logo {
   height: 60px;
   width: auto;
-  cursor: pointer; /* Adicionado para indicar clique */
+  cursor: pointer;
 }
 
 .nav-links {
@@ -129,7 +125,6 @@ onUnmounted(() => {
   font-size: 1rem;
 }
 
-/* O Vue Router vai aplicar esta classe automaticamente quando a rota bater */
 .nav-item.active,
 .nav-item:hover {
   color: var(--color-green);
@@ -190,7 +185,6 @@ onUnmounted(() => {
   border-bottom: none;
 }
 
-/* Ajuste seletor para pegar tanto 'a' quanto o router-link gerado */
 .dropdown-menu a {
   display: block;
   padding: 12px 0;
@@ -202,7 +196,7 @@ onUnmounted(() => {
 }
 
 .dropdown-menu a:hover,
-.dropdown-menu a.router-link-active { /* Style também o ativo no dropdown se quiser */
+.dropdown-menu a.router-link-active {
   background-color: var(--color-off-white);
   color: var(--color-green);
 }
