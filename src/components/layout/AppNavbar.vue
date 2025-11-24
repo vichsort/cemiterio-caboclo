@@ -1,20 +1,24 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { RouterLink } from 'vue-router' // Boa prática importar, embora auto-detectado
 
 const isDropdownOpen = ref(false)
 const dropdownRef = ref(null)
 
+// DEFINIÇÃO DAS ROTAS
+// Note que trocamos 'href' por 'to'.
+// 'to' aceita string ou objeto de rota.
 const navLinks = [
-  { text: 'Início', href: '#', active: true },
-  { text: 'Cultura', href: '#' },
-  { text: 'Linha Temporal', href: '#' },
-  { text: 'Localização', href: '#' }
+  { text: 'Início', to: '/' },
+  { text: 'Cultura', to: '/#cultura' }, // Exemplo de âncora (explicarei abaixo)
+  { text: 'Linha Temporal', to: '/timeline' },
+  { text: 'Localização', to: '/#localizacao' }
 ]
 
 const dropdownLinks = [
-  { text: 'Fontes', href: '#' },
-  { text: 'Contato', href: '#' },
-  { text: 'Projeto', href: '#' }
+  { text: 'Fontes', to: '/fontes' }, // Supondo rotas futuras
+  { text: 'Contato', to: '/contato' },
+  { text: 'Projeto', to: '/projeto' }
 ]
 
 const toggleDropdown = () => {
@@ -41,18 +45,22 @@ onUnmounted(() => {
     <div class="container">
       
       <div class="logo-area">
-        <img src="/logo.png" alt="Logo" class="logo" />
+        <router-link to="/">
+          <img src="/logo.png" alt="Logo Cemitério Caboclo" class="logo" />
+        </router-link>
       </div>
 
       <nav class="nav-links">
         <template v-for="(link, index) in navLinks" :key="index">
-          <a 
-            :href="link.href" 
+          
+          <router-link 
+            :to="link.to" 
             class="nav-item" 
-            :class="{ active: link.active }"
+            active-class="active"
           >
             {{ link.text }}
-          </a>
+          </router-link>
+
           <span v-if="index < navLinks.length - 1" class="divider">|</span>
         </template>
       </nav>
@@ -66,7 +74,9 @@ onUnmounted(() => {
           <div v-if="isDropdownOpen" class="dropdown-menu">
             <ul>
               <li v-for="(item, index) in dropdownLinks" :key="index">
-                <a :href="item.href">{{ item.text }}</a>
+                <router-link :to="item.to" @click="isDropdownOpen = false">
+                  {{ item.text }}
+                </router-link>
               </li>
             </ul>
           </div>
@@ -78,6 +88,7 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+/* Mantive todo o seu CSS original, pois é clean e funcional */
 .navbar {
   background-color: var(--color-white);
   padding: 1rem;
@@ -101,6 +112,7 @@ onUnmounted(() => {
 .logo {
   height: 60px;
   width: auto;
+  cursor: pointer; /* Adicionado para indicar clique */
 }
 
 .nav-links {
@@ -117,6 +129,7 @@ onUnmounted(() => {
   font-size: 1rem;
 }
 
+/* O Vue Router vai aplicar esta classe automaticamente quando a rota bater */
 .nav-item.active,
 .nav-item:hover {
   color: var(--color-green);
@@ -177,6 +190,7 @@ onUnmounted(() => {
   border-bottom: none;
 }
 
+/* Ajuste seletor para pegar tanto 'a' quanto o router-link gerado */
 .dropdown-menu a {
   display: block;
   padding: 12px 0;
@@ -187,7 +201,8 @@ onUnmounted(() => {
   transition: background 0.2s;
 }
 
-.dropdown-menu a:hover {
+.dropdown-menu a:hover,
+.dropdown-menu a.router-link-active { /* Style também o ativo no dropdown se quiser */
   background-color: var(--color-off-white);
   color: var(--color-green);
 }
