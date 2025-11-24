@@ -1,25 +1,38 @@
 <script setup>
-import TheNavbar from '@/components/layout/navbar.vue'
-import HeroIntro from '@/components/sections/HeroIntro.vue'
-import HistorySection from '@/components/sections/HistorySection.vue'
-import GallerySection from '@/components/sections/GallerySection.vue'
-import InfoSection from '@/components/sections/InfoSection.vue'
-import TheFooter from '@/components/layout/footer.vue'
+import { RouterView } from 'vue-router' // Importante
+import TheNavbar from '@/components/layout/AppNavbar.vue'
+import TheFooter from '@/components/layout/AppFooter.vue'
 </script>
 
 <template>
-  <TheNavbar />
-  <main class="main-content">
-    <HeroIntro />
-    <HistorySection />
-    <GallerySection />
-    <InfoSection />
-  </main>
-  <TheFooter />
+  <div class="app-wrapper">
+    <TheNavbar />
+
+    <main class="main-content">
+      <router-view v-slot="{ Component }">
+        <transition name="fade" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
+    </main>
+
+    <TheFooter />
+  </div>
 </template>
 
 <style scoped>
 .main-content {
-  padding-top: 100px; 
+  padding-top: 100px;
+  min-height: 80vh;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
