@@ -1,15 +1,17 @@
 <script setup>
+import { RouterLink } from 'vue-router'
+
 const navLinks = [
-  { text: 'Início', href: '#', active: true },
-  { text: 'Cultura', href: '#' },
-  { text: 'Linha do tempo', href: '#' },
-  { text: 'Localização', href: '#' }
+  { text: 'Início', to: '/' },
+  { text: 'Cultura', to: '/#cultura' },
+  { text: 'Linha do tempo', to: '/timeline' },
+  { text: 'Localização', to: '/#localizacao' }
 ]
 
 const moreLinks = [
-  { text: 'Fontes', href: '#' },
-  { text: 'Contato', href: '#' },
-  { text: 'Projeto', href: '#' }
+  { text: 'Fontes', to: '/fontes' },
+  { text: 'Contato', to: '/contato' },
+  { text: 'Projeto', to: '/projeto' }
 ]
 </script>
 
@@ -24,7 +26,9 @@ const moreLinks = [
             <h2 class="project-title">Cemitério Caboclo</h2>
             <p class="project-desc">
               O cemitério caboclo se encontra no coração do 
-              <a href="#" class="ifc-link">Instituto Federal Catarinense - Campus Concórdia ↗</a>
+              <a href="https://concordia.ifc.edu.br/" target="_blank" rel="noopener noreferrer" class="ifc-link">
+                Instituto Federal Catarinense - Campus Concórdia ↗
+              </a>
             </p>
           </div>
         </div>
@@ -42,10 +46,13 @@ const moreLinks = [
           <h3 class="nav-title">Navegação</h3>
           <ul class="nav-list">
             <li v-for="(link, index) in navLinks" :key="index">
-              <a :href="link.href" :class="{ active: link.active }">
+              <router-link 
+                :to="link.to" 
+                active-class="active"
+              >
                 {{ link.text }}
                 <span class="arrow">↗</span>
-              </a>
+              </router-link>
             </li>
           </ul>
         </div>
@@ -54,10 +61,13 @@ const moreLinks = [
           <h3 class="nav-title">Mais</h3>
           <ul class="nav-list">
             <li v-for="(link, index) in moreLinks" :key="index">
-              <a :href="link.href">
+              <router-link 
+                :to="link.to"
+                active-class="active"
+              >
                 {{ link.text }}
                 <span class="arrow">↗</span>
-              </a>
+              </router-link>
             </li>
           </ul>
         </div>
@@ -113,6 +123,11 @@ const moreLinks = [
   color: var(--color-green);
   text-decoration: none;
   font-weight: 700;
+  transition: color 0.2s;
+}
+
+.ifc-link:hover {
+  color: #9cdb8e;
 }
 
 .divider {

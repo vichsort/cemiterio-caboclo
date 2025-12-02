@@ -5,44 +5,77 @@ const timelineEvents = [
   {
     year: '1856',
     title: 'As Raízes',
-    description: 'Nascimento de Miguel Domingos Soares Fragoso em Rio Negro (PR). O início da jornada daquele que se tornaria um líder militar, religioso e pioneiro da região.',
-    image: '/green.png' 
+    description: 'Nascimento de Miguel Domingos Soares Fragoso em Rio Negro (PR). O início da jornada daquele que se tornaria um líder militar, religioso e pioneiro da região.'
+  },
+  {
+    year: '1874',
+    title: 'Casamento',
+    description: 'Casou-se em Rio Negro (PR), com Maria Vieira Machado, filha de Manuel Vieira Machado e de Anna do Rosário.'
   },
   {
     year: '1893',
     title: 'A Revolução Federalista',
-    description: 'Aos 40 anos, adere à causa federalista. Como Major, lidera o batalhão de voluntários "Dr. Pacheco" e participa do histórico cerco da Lapa.',
-    image: '/green.png'
+    description: 'Aos 40 anos, adere à causa federalista. Como Major, lidera o batalhão de voluntários "Dr. Pacheco" e participa do histórico cerco da Lapa.'
   },
   {
     year: '1894',
     title: 'Comandante-em-Chefe',
-    description: 'Eleito por seus pares para comandar o ataque à Lagoa Vermelha. Liderou a estratégica e difícil travessia do Rio Uruguai, protegendo a retaguarda das tropas.',
-    image: '/green.png'
+    description: 'Eleito por seus pares para comandar o ataque à Lagoa Vermelha. Liderou a estratégica e difícil travessia do Rio Uruguai, protegendo a retaguarda das tropas, combatendo com os homens do coronel Manoel do Nascimento Vargas, nas barrancas do rio Uruguai. Segundo a Ordem do dia Revolucionária, 1897,  "[...] procedeu-se a eleição, dando o seguinte resultado: Coronel Fragoso, 11 votos; Coronel [Neponucemo da] Costa, dois votos; Tenente Coronel Magdalena, 1 voto"'
+  },
+  {
+    year: '1895',
+    title: 'Retirada',
+    description: 'Fragoso, ciente do que aconteceu em Lapa (muitas mortes entre a população da cidade), abriu negociação para a rendição e o domínio revolucionário da vila. A demora de uma decisão força Fragoso a retirar os combatentes legalistas que se dispersaram pelas matas da região nas encostas do Rio Uruguai, próximo da região de Machadinho (RS). No mesmo ano, um tratado de paz que anistiava todos os feitos da guerra por parte dos que participaram desta foi assinado em Pelotas (RS)'
   },
   {
     year: '1900',
     title: 'O Pioneirismo',
-    description: 'Estabelece-se nas margens do lajeado que hoje leva seu nome (Rio Fragoso), fundando o primeiro núcleo habitado do Alto Vale do Rio Uruguai Catarinense.',
-    image: '/green.png'
+    description: 'Estabelece-se nas margens do lajeado que hoje leva seu nome (Rio Fragoso), fundando o primeiro núcleo habitado do Alto Vale do Rio Uruguai Catarinense, que compusera-se de aproximadamente 40 pessoas.'
+  },
+  {
+    year: '1902',
+    title: 'Segundo casamento',
+    description: 'Casou-se pela segunda vez, com Maria Ruthes Shmidt.'
+  },
+  {
+    year: '1903',
+    title: 'Localidade',
+    description: 'Encontrava-se no atual distrito de Santo Antônio da Boa Vista (Concórdia).'
+  },
+  {
+    year: '1909',
+    title: 'Barra de Santa Cruz',
+    description: 'Transfere-se para a barra do Lajeado Fragoso (Engenho Velho), conhecido antigamente como barra de Santa Cruz, onde viviam várias famílias que vieram de Rio Negro junto com Fragoso, cuidando da plantação e da criação do coronel.'
   },
   {
     year: '1910',
     title: 'Fé e Cura',
-    description: 'Constrói uma capela e atua como curandeiro (homeopata) e líder religioso. É neste período que teria tido contato com o monge José Maria.',
-    image: '/green.png'
+    description: 'Constrói uma capela dedicada à Nossa Senhora da Conceição que incendiou antes de estar totalmente construída. Atua como curandeiro (homeopata) e líder religioso. É neste período que teria tido contato com o monge José Maria. Nesta mesma época, demostrou-se pacífico e religioso, vindo a pregar a palavra de Deus e o uso de plantas medicinais para curar doentes, sendo muito estimado entre a população.'
   },
   {
     year: '1912',
     title: 'O Contestado',
-    description: 'Citado no inquérito da Batalha do Irani como "General Fanático". Apesar da fama, depôs provando não ter combatido ao lado do monge, discordando da crença de "imunidade às balas".',
-    image: '/green.png'
+    description: 'Francisco Soares Fragoso, filho do Coronel Domingos aparece como requerente de terras na barra do Rio Jacutinga e barra do Santa Cruz (atual Rio Fragoso). Citado no inquérito da Batalha do Irani como "General Fanático". Neste momento, o Coronel depõe contra José Maria, o qual abertamente acompanhava. Ali, nascem discussões a respeito de combates anteriores, onde criticava sua crença de "imunidade às balas" e sacrifícios.'
+  },
+  {
+    year: '1912',
+    title: 'A guerra do Contestado',
+    description: 'A Batalha de Irani foi um dos primeiros e mais violentos confrontos da Guerra do Contestado, ocorrido em 22 de outubro de 1912 na fronteira entre Santa Catarina e Paraná. Tropas estaduais paranaenses atacaram os seguidores do "monge" José Maria, levando à morte do líder religioso e de muitos sertanejos, além de um comandante das tropas paranaenses. Este evento marca o início do conflito, que se prolongou até 1916 e foi motivado por disputas de terra e pobreza na região. '
+  },
+  {
+    year: '1912',
+    title: 'Os relatos',
+    description: 'com 56 anos de idade, presta depoimento, apresentando-se como industrial, filho de Honório Soares Fragoso e residente na Jacutinga, alfabetizado. Em 23/11, o chefe de polícia do Paraná escreve ao governado paranaense falando de uma possível invasão cabocla à Palmas dirigidos por Miguel Fragoso. Os depoentes de tal inquérito são unânimes em afirmar que Miguel Fragoso não tomou parte no combate. Indiferente disto, Miguel Fragoso ganha uma má fama chegando a ser dele dito que José Maria era um homem bom, servindo de pretexto para os interesses de Fragoso e seus companheiros. Neste, inquérito, deliberadamente Miguel Fragoso tenta afastar-se do monge José Maria.'
+  },
+  {
+    year: '1914',
+    title: 'O Engenho Velho',
+    description: 'Entre 1900 e 1914, o coronel Fragoso construiu um engenho na barra do riacho Santa Cruz (hoje, Fragosos) e uma rudimentar serraria de madeira, onde este encontrava o Rio Jacutinga. Este engenho rudimentar foi administrado pela família fragoso até o ano de 1913 quando é arrendado por José Fabrício das Neves.'
   },
   {
     year: '1914',
     title: 'O Legado: Cemitério Caboclo',
-    description: 'Falece o Coronel Fragoso. Seu enterro inaugura o cemitério, hoje Patrimônio Cultural de Concórdia, onde repousam as famílias fundadoras do município.',
-    image: '/green.png'
+    description: 'Falece o Coronel Fragoso, atacado de hidropisia foi procurar melhoras na atual povoação de Fragoso, em casa de um cunhado, quando faleceu em meados de 1914. Seu enterro inaugura o cemitério, hoje Patrimônio Cultural de Concórdia. Foi este pequeno núcleo populacional composto pelas famílias Fragoso, Ruth Scmitt, Dos Passos, Grein, Palhano, Brum de Camargo, Amaral, Soares e outros que, ocupando essas terras, escreveram as mais remotas origens do município de Concórdia (SC).'
   }
 ]
 
@@ -100,10 +133,6 @@ const goToSlide = (index) => {
             </div>
 
             <div class="card-content">
-              <div class="image-wrapper">
-                <img :src="event.image" :alt="event.title" class="event-image" />
-              </div>
-              
               <div class="text-content">
                 <h3 class="event-title">{{ event.title }}</h3>
                 <p class="event-description">{{ event.description }}</p>
@@ -256,23 +285,6 @@ const goToSlide = (index) => {
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   width: 100%;
   text-align: left;
-}
-
-.image-wrapper {
-  width: 100%;
-  height: 300px;
-  background-color: var(--color-green);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.event-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  background-color: var(--color-green); 
 }
 
 .text-content {

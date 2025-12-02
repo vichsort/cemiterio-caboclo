@@ -22,7 +22,6 @@ import TheFooter from '@/components/layout/AppFooter.vue'
 
 <style scoped>
 .main-content {
-  padding-top: 100px;
   min-height: 80vh;
 }
 
