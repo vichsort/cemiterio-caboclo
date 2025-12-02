@@ -43,7 +43,7 @@ onUnmounted(() => {
       
       <div class="logo-area">
         <router-link to="/">
-          <img src="/logo.png" alt="Logo Cemitério Caboclo" class="logo" />
+          <img src="/src/assets/logo.png" alt="Logo Cemitério Caboclo" class="logo" />
         </router-link>
       </div>
 

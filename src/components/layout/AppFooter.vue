@@ -21,7 +21,7 @@ const moreLinks = [
       
       <div class="identity-column">
         <div class="project-identity">
-          <img src="/logo.png" alt="Logo Cemitério Caboclo" class="project-logo" />
+          <img src="/src/assets/logo.png" alt="Logo Cemitério Caboclo" class="project-logo" />
           <div class="project-text">
             <h2 class="project-title">Cemitério Caboclo</h2>
             <p class="project-desc">
@@ -36,7 +36,7 @@ const moreLinks = [
         <hr class="divider" />
 
         <div class="institution-identity">
-          <img src="/ifc.png" alt="Instituto Federal Catarinense" class="ifc-logo" />
+          <img src="/src/assets/ifc.png" alt="Instituto Federal Catarinense" class="ifc-logo" />
         </div>
       </div>
 
