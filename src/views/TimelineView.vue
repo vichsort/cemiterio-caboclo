@@ -1,5 +1,5 @@
 <script setup>
-import TimelineCarousel from '@/components/sections/TimelineSection.vue' 
+import TimelineCarousel from '@/components/sections/linha-temporal/TimelineSection.vue' 
 </script>
 
 <template>
@@ -7,3 +7,9 @@ import TimelineCarousel from '@/components/sections/TimelineSection.vue'
     <TimelineCarousel />
   </div>
 </template>
+
+<style scoped>
+.timeline-page {
+  padding-top: 100px; 
+}
+</style>

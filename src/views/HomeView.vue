@@ -1,8 +1,8 @@
 <script setup>
-import HeroIntro from '@/components/sections/HeroIntro.vue'
-import HistorySection from '@/components/sections/HistorySection.vue'
-import GallerySection from '@/components/sections/GallerySection.vue'
-import InfoSection from '@/components/sections/InfoSection.vue'
+import HeroIntro from '@/components/sections/inicio/HeroIntro.vue'
+import HistorySection from '@/components/sections/inicio/HistorySection.vue'
+import GallerySection from '@/components/sections/inicio/GallerySection.vue'
+import InfoSection from '@/components/sections/inicio/InfoSection.vue'
 </script>
 
 <template>
