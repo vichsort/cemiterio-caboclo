@@ -5,8 +5,8 @@
   <section class="info-section">
     <div class="container">
       <div class="images-column">
-        <div class="image-card"></div>
-        <div class="image-card"></div>
+        <img src="/images/inicio/2.jpg" alt="Imagem da entrada do cemitério caboclo" class="image-card" />
+        <img src="/images/inicio/3.jpg" alt="Imagem da entrada do cemitério caboclo" class="image-card" />
       </div>
 
       <div class="content-column">
@@ -14,7 +14,7 @@
         
         <div class="text-block">
           <p>
-            Para conhecer mais sobre a história desse local, professores, técnicos em educação e estudantes do IFC desenvolveram dois projetos buscando respostas para suas questões, resolvendo mistérios a respeito de diversos tópicos, como de histórias, relações e comunidades que compuseram este tão sacro campo.
+            Para Maurice Halbwachs, “a memória, como fenômeno social, é coletivamente construída e reproduzida ao longo do tempo. Assim como o patrimônio social é dinâmica, mutável e seletiva; seletiva porque nem tudo o que é importante para o grupo fica “gravado na memória”, fica registrado para as gerações futuras.” (in: RODRIGUES, p.5)
           </p>
           <p>
             Esse Campo Santo é patrimônio tombado pelo município de Concórdia desde o ano de 2005.

@@ -25,7 +25,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
         <BaseButton variant="secondary">Saiba mais</BaseButton>
       </div>
 
-      <div class="image-placeholder"></div>
+      <img src="/images/inicio/0.jpg" alt="Imagem da entrada do cemitério caboclo" class="image-placeholder" />
     </div>
   </section>
 </template>

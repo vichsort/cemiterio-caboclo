@@ -9,19 +9,16 @@
         
         <div class="paragraphs">
           <p>
-            Este ambiente único foi preservado ao longo dos anos e representa um importante ecossistema local. Com características naturais distintivas, o local abriga uma rica biodiversidade.
+            O patrimônio cultural é significativo para a identidade social e para a memória comum de um grupo. É a presença do passado através da ação do pensamento, da memória. São lugares de memória, como se refere Pierre Nora aos espaços e “temporalidades que acabam por ser sacralizados em determinados grupos nas sociedades urbanas”. (PESAVENTO, 2002 p. 29)
           </p>
           <p>
-            A área é reconhecida por sua importância ecológica e serve como refúgio para diversas espécies nativas, além de proporcionar um espaço de contemplação e aprendizado sobre a natureza.
-          </p>
-          <p>
-            Através de iniciativas de preservação e conscientização, buscamos manter este patrimônio natural para as futuras gerações.
+            A história em comum passa a pertencer a cada geração que se segue. As memórias de cada indivíduo estão fortemente ligadas às construções que sinalizam um passado comum a todos.
           </p>
         </div>
       </div>
 
       <div class="image-column">
-        <div class="image-placeholder"></div>
+        <img src="/images/inicio/1.jpg" alt="Imagem de fora para dentro de túmulos do cemitério" class="image-placeholder" />
       </div>
     </div>
   </section>
