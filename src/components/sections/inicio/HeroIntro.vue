@@ -1,5 +1,6 @@
 <script setup>
 import BaseButton from '@/components/ui/BaseButton.vue'
+import BaseImage from '@/components/ui/BaseImage.vue';
 </script>
 
 <template>
@@ -25,7 +26,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
         <BaseButton variant="secondary">Saiba mais</BaseButton>
       </div>
 
-      <img src="/images/inicio/0.jpg" alt="Imagem da entrada do cemitério caboclo" class="image-placeholder" />
+      <BaseImage src="/images/leading.jpg" alt="Imagem da entrada do cemitério caboclo" class="image-placeholder" :eager="true"></BaseImage>
     </div>
   </section>
 </template>

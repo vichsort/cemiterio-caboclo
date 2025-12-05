@@ -1,4 +1,5 @@
 <script setup>
+import BaseImage from '@/components/ui/BaseImage.vue'
 import { ref } from 'vue'
 
 const props = defineProps({
@@ -30,7 +31,7 @@ const toggleCard = () => {
 <template>
   <article class="card" :class="{ 'card-open': isOpen }">
     <div class="image-wrapper">
-      <img :src="image" :alt="title" loading="lazy" />
+      <BaseImage :src="image" :title="title" />
     </div>
 
     <div class="card-body">

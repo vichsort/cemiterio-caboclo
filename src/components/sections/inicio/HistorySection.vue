@@ -1,4 +1,6 @@
 <script setup>
+import BaseImage from '@/components/ui/BaseImage.vue';
+
 </script>
 
 <template>
@@ -18,7 +20,7 @@
       </div>
 
       <div class="image-column">
-        <img src="/images/inicio/1.jpg" alt="Imagem de fora para dentro de túmulos do cemitério" class="image-placeholder" />
+        <BaseImage src="/images/cemiterio-externo.jpg" alt="Imagem de fora para dentro de túmulos do cemitério" class="image-placeholder" />
       </div>
     </div>
   </section>

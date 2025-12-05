@@ -1,12 +1,14 @@
 <script setup>
+import BaseImage from '@/components/ui/BaseImage.vue';
+
 </script>
 
 <template>
   <section class="info-section">
     <div class="container">
       <div class="images-column">
-        <img src="/images/inicio/2.jpg" alt="Imagem da entrada do cemitério caboclo" class="image-card" />
-        <img src="/images/inicio/3.jpg" alt="Imagem da entrada do cemitério caboclo" class="image-card" />
+        <BaseImage src="/images/tumulo-fragoso-lateral.jpg" alt="Imagem do túmulo do Fragoso" class="image-card" />
+        <BaseImage src="/images/tumulo-fragoso.jpg" alt="Imagem do túmulo do Fragoso" class="image-card" />
       </div>
 
       <div class="content-column">
