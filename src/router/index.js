@@ -17,6 +17,11 @@ const router = createRouter({
       component: TimelineView
     },
     {
+      path: '/culture',
+      name: 'culture',
+      component: () => import('@/views/CultureView.vue')
+    },
+    {
       path: '/:pathMatch(.*)*', 
       name: 'not-found',
       component: NotFoundView

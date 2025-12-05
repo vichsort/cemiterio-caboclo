@@ -7,7 +7,7 @@ const dropdownRef = ref(null)
 
 const navLinks = [
   { text: 'Início', to: '/' },
-  { text: 'Cultura', to: '/#cultura' },
+  { text: 'Cultura', to: '/culture' },
   { text: 'Linha Temporal', to: '/timeline' },
   { text: 'Localização', to: '/#localizacao' }
 ]

@@ -1,5 +1,5 @@
 <script setup>
-import { RouterView } from 'vue-router' // Importante
+import { RouterView } from 'vue-router'
 import TheNavbar from '@/components/layout/AppNavbar.vue'
 import TheFooter from '@/components/layout/AppFooter.vue'
 </script>
