@@ -1,6 +1,26 @@
 <script setup>
+import { ref, computed } from 'vue'
 import CultureCard from '@/components/ui/CultureCard.vue'
 
+const thumbsGlob = import.meta.glob('@/assets/culture/*.{png,jpg,jpeg,webp}', { 
+  eager: true, 
+  query: { w: 400, format: 'webp', q: 60 } 
+})
+
+const fullGlob = import.meta.glob('@/assets/culture/*.{png,jpg,jpeg,webp}', { 
+  eager: true, 
+  as: 'url' 
+})
+
+const getImages = (filename) => {
+  const thumbKey = Object.keys(thumbsGlob).find(key => key.includes(filename))
+  const fullKey = Object.keys(fullGlob).find(key => key.includes(filename))
+
+  return {
+    thumb: thumbKey ? thumbsGlob[thumbKey].default : null,
+    full: fullKey ? fullGlob[fullKey] : null
+  }
+}
 const cultureTopics = [
   {
     title: 'Comunidade de Fragosos',
@@ -51,35 +71,74 @@ const cultureTopics = [
     content: 'Na pequena comunidade de Fragosos, a estrada que atravessava a região era um elemento central nas memórias dos moradores mais antigos. A entrevistada recorda que a estrada passava por trás de sua casa, seguindo em direção a uma ponte próxima. Na época de sua infância, havia menos famílias na região do que hoje, provavelmente menos da metade. Ela menciona que as famílias eram maiores antes, quando os terrenos eram ocupados por apenas uma ou duas pessoas. No entanto, ao longo do tempo, esses terrenos foram vendidos e adquiridos por imigrantes italianos, como Simioni e Baggio, além de um grupo de italianos chamados Pierosan, que foram comprando as terras na região. Quando questionada sobre sua participação em atividades na comunidade, a entrevistada menciona que participa de um grupo de idosos. Ela também compartilha uma história interessante sobre seu pai, que, quando chegou à região, não encontrou escolas para seus filhos. Ele era uma pessoa inteligente e começou a ensinar seus filhos em casa. A entrevistada relata que seu pai deu aulas em casa por um ano, até que as escolas foram estabelecidas e seus irmãos puderam frequentá-las. Ao ser perguntada sobre o ano em que seu pai chegou a Fragosos, ela responde que ele chegou em 1928, sendo o primeiro imigrante a pisar na região. No entanto, ela menciona que ele sofreu bastante por ser estrangeiro. Ela explica que seu pai era originalmente de Engenho Velho, mas serviu no exército e participou de uma das revoltas durante o Contestado, por volta de 1912. A época do Contestado foi marcada por conflitos armados e disputas de terras entre os caboclos locais, liderados pelo Monge José Maria, e as forças militares do governo. Em relação à formação da comunidade de Fragosos, a entrevistada menciona que a região teve origem a partir de um grupo de moradores que chegaram durante a Guerra do Contestado. Essas pessoas acamparam na região, inicialmente próxima à ponte Kerber, e com o tempo mais imigrantes, como italianos, alemães, poloneses e até pessoas de origem africana, se juntaram ao grupo. A colonização se desenvolveu ao longo do tempo, e em 1904 foi fundada a comunidade de Fragosos, com a realização da primeira missa registrada na região pelos padres de Joaçaba. Em relação à participação do Coronel Miguel Soares Fragosos na Guerra do Contestado, existem relatos de estudiosos que indicam sua associação com o Monge José Maria. Na véspera da primeira batalha de Irani, em 22 de outubro de 1912, o Coronel Fragosos, juntamente com o Coronel Domingos Soares de Palmas, no Paraná, tentaram convencer o Monge José Maria a desistir da luta contra as forças paranaenses lideradas pelo Coronel João Gualberto. No entanto, o Monge José Maria permaneceu irredutível em sua determinação. A presença do Coronel Miguel Soares Fragosos na Guerra do Contestado destaca a importância histórica dessa região. O conflito, que ocorreu entre 1912 e 1916, foi um período de intensos confrontos armados e disputas de terras entre os caboclos, camponeses locais, e as forças militares do governo brasileiro. A figura do Monge José Maria, líder carismático dos caboclos, inspirou uma resistência feroz contra a intervenção estatal e a exploração das terras. Fragosos foi testemunha desse conflito e também recebeu uma crescente onda de imigrantes, que se juntaram aos moradores locais. Italianos, alemães, poloneses e outros grupos étnicos contribuíram para a diversidade cultural da região. Essa mistura de origens e histórias moldou a identidade de Fragosos ao longo do tempo. Hoje, Fragosos é uma comunidade que preserva suas raízes históricas, com pessoas que valorizam suas tradições e a memória dos pioneiros que ajudaram a construir a região. A participação ativa em grupos de idosos e atividades comunitárias mostra o comprometimento em manter viva a cultura local e fortalecer os laços entre os moradores. A história de Fragosos é um exemplo vivo da conexão entre o Contestado e a imigração. O conflito trouxe transformações sociais e territoriais, enquanto a chegada dos imigrantes agregou novas perspectivas e contribuições para a comunidade. A memória desses eventos e a herança cultural são elementos importantes para a compreensão e valorização da história local. Fragosos, com sua estrada que atravessa a região, é um lugar onde o passado e o presente se encontram, lembrando-nos da importância de reconhecer e preservar nossas raízes, celebrando a diversidade e a resiliência daqueles que moldaram essa comunidade ao longo dos anos.'
   }
 ]
+
+const processedTopics = computed(() => {
+  return cultureTopics.map(topic => {
+    const images = getImages(topic.imageName)
+    return {
+      ...topic,
+      thumbUrl: images.thumb || '/green.png',
+      fullUrl: images.full || '/green.png'
+    }
+  })
+})
+
+// --- 3. LÓGICA DO MODAL ---
+const selectedTopic = ref(null)
+
+const openModal = (topic) => {
+  selectedTopic.value = topic
+  document.body.style.overflow = 'hidden'
+}
+
+const closeModal = () => {
+  selectedTopic.value = null
+  document.body.style.overflow = 'auto'
+}
 </script>
 
 <template>
   <section class="culture-page">
     <div class="header-content">
       <h1 class="page-title">Cultura e Tradição</h1>
-      <p class="page-subtitle">
-        Conheça os pilares que sustentam a história e a identidade do povo caboclo.
-      </p>
+      <p class="page-subtitle">Conheça os pilares que sustentam a história e a identidade do povo caboclo.</p>
     </div>
 
     <div class="cards-grid">
       <CultureCard 
-        v-for="(topic, index) in cultureTopics"
+        v-for="(topic, index) in processedTopics"
         :key="index"
-        :image="topic.image"
+        :image="topic.thumbUrl" 
         :title="topic.title"
         :description="topic.description"
-        :content="topic.content"
+        @open="openModal(topic)"
       />
     </div>
+
+    <Transition name="fade">
+      <div v-if="selectedTopic" class="modal-backdrop" @click.self="closeModal">
+        <div class="modal-container">
+          <button class="close-btn" @click="closeModal">×</button>
+          
+          <div class="modal-header">
+            <div class="modal-image-box">
+              <img :src="selectedTopic.fullUrl" :alt="selectedTopic.title" />
+            </div>
+            <h2 class="modal-title">{{ selectedTopic.title }}</h2>
+          </div>
+
+          <div class="modal-body">
+            <div class="text-content" v-html="selectedTopic.content"></div>
+          </div>
+
+        </div>
+      </div>
+    </Transition>
+
   </section>
 </template>
 
 <style scoped>
-.culture-page {
-  padding-top: 100px; 
-}
-
 .culture-page {
   padding: 4rem 1rem;
   background-color: var(--color-off-white);
@@ -89,40 +148,130 @@ const cultureTopics = [
 .header-content {
   text-align: center;
   margin-bottom: 4rem;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .page-title {
   font-size: 3rem;
   color: var(--color-brown);
-  margin-bottom: 1rem;
 }
 
 .page-subtitle {
-  font-size: 1.2rem;
   color: #666;
-  line-height: 1.5;
 }
 
 .cards-grid {
   display: grid;
-  /* Grid Mágico: Cria colunas automaticamente com no mínimo 300px */
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Ajuste para mobile */
+/* --- ESTILOS DO MODAL --- */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85); /* Fundo escuro */
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.modal-container {
+  background-color: var(--color-white);
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255,255,255,0.8);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-black);
+}
+
+.modal-header {
+  position: relative;
+}
+
+.modal-image-box {
+  width: 100%;
+  height: 300px;
+  background-color: #eee;
+}
+
+.modal-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-title {
+  padding: 1.5rem 2rem 0.5rem 2rem;
+  margin: 0;
+  font-size: 2rem;
+  color: var(--color-brown);
+  background-color: var(--color-white);
+}
+
+.modal-body {
+  padding: 0 2rem 2rem 2rem;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.text-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+}
+
+.text-content :deep(p) {
+  margin-bottom: 1rem;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
 @media (max-width: 768px) {
-  .page-title {
-    font-size: 2rem;
+  .modal-image-box {
+    height: 200px;
   }
-  
-  .culture-page {
-    padding: 2rem 1rem;
+  .modal-title {
+    font-size: 1.5rem;
+    padding: 1rem 1rem 0.5rem 1rem;
+  }
+  .modal-body {
+    padding: 0 1rem 1rem 1rem;
   }
 }
 </style>

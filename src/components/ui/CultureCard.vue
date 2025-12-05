@@ -1,62 +1,36 @@
 <script setup>
 import BaseImage from '@/components/ui/BaseImage.vue'
-import { ref } from 'vue'
 
-const props = defineProps({
-  image: {
-    type: String,
-    required: true
-  },
-  title: {
-    type: String,
-    required: true
-  },
-  description: {
-    type: String,
-    required: true
-  },
-  content: {
-    type: String,
-    default: ''
-  }
+// O card agora é "burro": só recebe dados e emite clique
+defineProps({
+  image: { type: String, required: true }, // Vai receber a URL da miniatura
+  title: { type: String, required: true },
+  description: { type: String, required: true }
 })
 
-const isOpen = ref(false)
-
-const toggleCard = () => {
-  isOpen.value = !isOpen.value
-}
+// Define o evento que o pai vai ouvir
+defineEmits(['open'])
 </script>
 
 <template>
-  <article class="card" :class="{ 'card-open': isOpen }">
+  <article class="culture-card">
     <div class="image-wrapper">
-      <BaseImage :src="image" :title="title" />
+      <BaseImage :src="image" :alt="title" />
     </div>
 
     <div class="card-body">
       <h3 class="card-title">{{ title }}</h3>
+      <p class="card-description">{{ description }}</p>
       
-      <p class="card-description">
-        {{ description }}
-      </p>
-
-      <Transition name="expand">
-        <div v-if="isOpen" class="card-content">
-          <hr class="divider">
-          <p>{{ content }}</p>
-        </div>
-      </Transition>
-
-      <button @click="toggleCard" class="btn-action">
-        {{ isOpen ? 'Ler menos' : 'Ler mais' }}
+      <button @click="$emit('open')" class="btn-read-more">
+        Ler história completa
       </button>
     </div>
   </article>
 </template>
 
 <style scoped>
-.card {
+.culture-card {
   background-color: var(--color-white);
   border-radius: 16px;
   overflow: hidden;
@@ -64,67 +38,43 @@ const toggleCard = () => {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  height: fit-content;
+  height: 100%; /* Garante altura igual no grid */
 }
 
-.card:hover {
+.culture-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .image-wrapper {
   width: 100%;
-  height: 220px;
-  overflow: hidden;
-  background-color: var(--color-green);
-}
-
-.image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.card:hover .image-wrapper img {
-  transform: scale(1.05);
+  height: 200px;
+  background-color: #eee;
 }
 
 .card-body {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  flex-grow: 1; /* Empurra o botão para baixo se necessário */
 }
 
 .card-title {
-  font-family: var(--font-primary);
   color: var(--color-brown);
   font-size: 1.5rem;
   margin: 0 0 1rem 0;
+  font-family: var(--font-primary);
 }
 
 .card-description {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.card-content {
   font-size: 0.95rem;
-  color: #444;
-  line-height: 1.6;
-  padding-bottom: 1rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
 }
 
-.divider {
-  border: 0;
-  height: 1px;
-  background-color: #eee;
-  margin: 0 0 1rem 0;
-}
-
-.btn-action {
+.btn-read-more {
   align-self: flex-start;
   background: none;
   border: 2px solid var(--color-green);
@@ -137,23 +87,8 @@ const toggleCard = () => {
   font-family: var(--font-primary);
 }
 
-.btn-action:hover {
+.btn-read-more:hover {
   background-color: var(--color-green);
   color: var(--color-white);
-}
-
-.expand-enter-active,
-.expand-leave-active {
-  transition: all 0.3s ease-out;
-  max-height: 500px;
-  opacity: 1;
-}
-
-.expand-enter-from,
-.expand-leave-to {
-  max-height: 0;
-  opacity: 0;
-  margin-top: 0;
-  padding-bottom: 0;
 }
 </style>
