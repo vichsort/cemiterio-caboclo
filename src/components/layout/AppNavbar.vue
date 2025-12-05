@@ -9,7 +9,7 @@ const navLinks = [
   { text: 'Início', to: '/' },
   { text: 'Cultura', to: '/culture' },
   { text: 'Linha Temporal', to: '/timeline' },
-  { text: 'Localização', to: '/#localizacao' }
+  { text: 'Galeria', to: '/gallery' }
 ]
 
 const dropdownLinks = [

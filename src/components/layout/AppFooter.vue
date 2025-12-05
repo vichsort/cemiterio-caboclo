@@ -3,9 +3,9 @@ import { RouterLink } from 'vue-router'
 
 const navLinks = [
   { text: 'Início', to: '/' },
-  { text: 'Cultura', to: '/#cultura' },
+  { text: 'Cultura', to: '/culture' },
   { text: 'Linha do tempo', to: '/timeline' },
-  { text: 'Localização', to: '/#localizacao' }
+  { text: 'Galeria', to: '/gallery' }
 ]
 
 const moreLinks = [

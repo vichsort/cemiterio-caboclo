@@ -22,6 +22,11 @@ const router = createRouter({
       component: () => import('@/views/CultureView.vue')
     },
     {
+      path: '/gallery',
+      name: 'gallery',
+      component: () => import('@/views/GalleryView.vue')
+    },
+    {
       path: '/:pathMatch(.*)*', 
       name: 'not-found',
       component: NotFoundView
