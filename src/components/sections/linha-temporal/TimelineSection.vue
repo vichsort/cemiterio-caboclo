@@ -122,7 +122,7 @@ const goToSlide = (index) => {
   <section class="timeline-section">
     <div class="header-content">
       <h2 class="section-title">Linha do Tempo</h2>
-      <p class="section-subtitle">A trajetória histórica do Cemitério Caboclo</p>
+      <p class="section-subtitle">A trajetória histórica do Coronel Fragoso</p>
     </div>
 
     <div class="carousel-container">

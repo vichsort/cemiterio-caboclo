@@ -2,10 +2,19 @@
 import BaseImage from '@/components/ui/BaseImage.vue'
 import { ref, computed } from 'vue'
 
-const imagesGlob = import.meta.glob('@/assets/gallery/*.{png,jpg,jpeg,webp}', { eager: true })
+const thumbsGlob = import.meta.glob('@/assets/gallery/*.{png,jpg,jpeg,webp}', { 
+  eager: true, 
+  query: { w: 400, format: 'webp', q: 60 } 
+})
+
+const fullGlob = import.meta.glob('@/assets/gallery/*.{png,jpg,jpeg,webp}', { 
+  eager: true, 
+  query: '?url',
+  import: 'default'
+})
 
 const galleryItems = computed(() => {
-  return Object.keys(imagesGlob).map(path => {
+  return Object.keys(fullGlob).map(path => {
     const filenameWithExt = path.split('/').pop()
     const titleRaw = filenameWithExt.split('.').slice(0, -1).join('.')
 
@@ -15,8 +24,9 @@ const galleryItems = computed(() => {
       .trim()
 
     return {
-      path: imagesGlob[path].default,
-      title: formattedTitle
+      title: formattedTitle,
+      thumbPath: thumbsGlob[path].default, 
+      fullPath: fullGlob[path] 
     }
   })
 })
@@ -32,7 +42,9 @@ const openModal = (item) => {
 
 const closeModal = () => {
   isModalOpen.value = false
-  selectedImage.value = null
+  setTimeout(() => {
+    selectedImage.value = null
+  }, 300)
   document.body.style.overflow = 'auto'
 }
 </script>
@@ -51,7 +63,7 @@ const closeModal = () => {
         class="gallery-item"
         @click="openModal(item)"
       >
-        <BaseImage :src="item.path" :alt="item.title" />
+        <BaseImage :src="item.thumbPath" :alt="item.title" />
         
         <div class="hover-info">
           <span>{{ item.title }}</span>
@@ -65,10 +77,10 @@ const closeModal = () => {
           <button class="close-btn" @click="closeModal">×</button>
           
           <div class="modal-image-wrapper">
-            <img :src="selectedImage.path" :alt="selectedImage.title" />
+            <img v-if="selectedImage" :src="selectedImage.fullPath" :alt="selectedImage.title" />
           </div>
           
-          <div class="modal-caption">
+          <div class="modal-caption" v-if="selectedImage">
             {{ selectedImage.title }}
           </div>
         </div>
