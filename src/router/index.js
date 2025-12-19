@@ -6,6 +6,10 @@ import NotFoundView from '@/views/NotFoundView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    // ------------------------------------------------ //
+    // ------------------ MAIN VIEWS ------------------ //
+    // ------------------------------------------------ //
+
     {
       path: '/',
       name: 'home',
@@ -26,6 +30,31 @@ const router = createRouter({
       name: 'gallery',
       component: () => import('@/views/GalleryView.vue')
     },
+
+    // ------------------------------------------------ //
+    // ----------------- 'MORE' VIEWS ----------------- //
+    // ------------------------------------------------ //
+
+    {
+      path: '/project',
+      name: 'project',
+      component: () => import('@/views/ProjectView.vue')
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: () => import('@/views/ContactView.vue')
+    },
+    {
+      path: '/article',
+      name: 'article',
+      component: () => import('@/views/ArticleView.vue')
+    },
+
+    // ------------------------------------------------ //
+    // ---------------- ADDERALL VIEWS ---------------- //
+    // ------------------------------------------------ //
+
     {
       path: '/:pathMatch(.*)*', 
       name: 'not-found',

@@ -9,9 +9,9 @@ const navLinks = [
 ]
 
 const moreLinks = [
-  { text: 'Fontes', to: '/fontes' },
+  { text: 'Projeto', to: '/projeto' },
   { text: 'Contato', to: '/contato' },
-  { text: 'Projeto', to: '/projeto' }
+  { text: 'Artigo', to: '/artigo' }
 ]
 </script>
 

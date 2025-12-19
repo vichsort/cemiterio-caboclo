@@ -13,9 +13,9 @@ const navLinks = [
 ]
 
 const dropdownLinks = [
-  { text: 'Fontes', to: '/fontes' },
+  { text: 'Projeto', to: '/projeto' },
   { text: 'Contato', to: '/contato' },
-  { text: 'Projeto', to: '/projeto' }
+  { text: 'Artigo', to: '/artigo' }
 ]
 
 const toggleDropdown = () => {
