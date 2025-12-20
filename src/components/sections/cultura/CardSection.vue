@@ -9,7 +9,8 @@ const thumbsGlob = import.meta.glob('@/assets/culture/*.{png,jpg,jpeg,webp}', {
 
 const fullGlob = import.meta.glob('@/assets/culture/*.{png,jpg,jpeg,webp}', { 
   eager: true, 
-  as: 'url' 
+  query: '?url',
+  import: 'default'
 })
 
 const getImages = (filename) => {

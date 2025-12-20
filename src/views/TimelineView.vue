@@ -1,10 +1,10 @@
 <script setup>
-import TimelineCarousel from '@/components/sections/linha-temporal/TimelineSection.vue' 
+import SliderSection from '@/components/sections/linha-temporal/SliderSection.vue';
 </script>
 
 <template>
   <div class="timeline-page">
-    <TimelineCarousel />
+    <SliderSection />
   </div>
 </template>
 
