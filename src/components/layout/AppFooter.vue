@@ -9,7 +9,6 @@ const navLinks = [
 ]
 
 const moreLinks = [
-  { text: 'Projeto', to: '/project' },
   { text: 'Contato', to: '/contact' },
   { text: 'Artigo', to: '/article' }
 ]

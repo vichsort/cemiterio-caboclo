@@ -1,18 +1,10 @@
-<!-- this is template code! -->
-
 <script setup>
-import HeroIntro from '@/components/sections/inicio/HeroIntro.vue'
-import HistorySection from '@/components/sections/inicio/HistorySection.vue'
-import GallerySection from '@/components/sections/inicio/PreviewGallerySection.vue'
-import InfoSection from '@/components/sections/inicio/InfoSection.vue'
+import ArticleSection from '@/components/sections/mais/artigo/ArticleSection.vue'
 </script>
 
 <template>
   <main class="main-content">
-    <HeroIntro />
-    <HistorySection />
-    <GallerySection />
-    <InfoSection />
+    <ArticleSection />
   </main>
 </template>
 

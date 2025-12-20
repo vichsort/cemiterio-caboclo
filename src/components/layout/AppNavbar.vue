@@ -13,7 +13,6 @@ const navLinks = [
 ]
 
 const dropdownLinks = [
-  { text: 'Projeto', to: '/project' },
   { text: 'Contato', to: '/contact' },
   { text: 'Artigo', to: '/article' }
 ]

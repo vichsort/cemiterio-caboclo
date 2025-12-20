@@ -34,12 +34,6 @@ const router = createRouter({
     // ------------------------------------------------ //
     // ----------------- 'MORE' VIEWS ----------------- //
     // ------------------------------------------------ //
-
-    {
-      path: '/project',
-      name: 'project',
-      component: () => import('@/views/ProjectView.vue')
-    },
     {
       path: '/contact',
       name: 'contact',
