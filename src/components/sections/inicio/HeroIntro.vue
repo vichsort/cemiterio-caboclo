@@ -1,6 +1,17 @@
 <script setup>
+import { useRouter } from 'vue-router'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseImage from '@/components/ui/BaseImage.vue';
+
+const router = useRouter()
+
+const goToGallery = () => {
+  router.push('/gallery')
+}
+
+const goToArticle = () => {
+  router.push('/article') 
+}
 </script>
 
 <template>
@@ -13,7 +24,9 @@ import BaseImage from '@/components/ui/BaseImage.vue';
       
       <h2 class="subtitle">
         O cemitério caboclo se encontra no coração do 
-        <a href="#" class="link">Instituto Federal Catarinense - Campus Concórdia ↗</a>
+        <a href="https://concordia.ifc.edu.br/" target="_blank" rel="noopener noreferrer" class="link">
+                Instituto Federal Catarinense - Campus Concórdia ↗
+              </a>
       </h2>
 
       <p class="description">
@@ -21,9 +34,9 @@ import BaseImage from '@/components/ui/BaseImage.vue';
       </p>
 
       <div class="actions">
-        <BaseButton variant="primary">Veja a galeria</BaseButton>
+        <BaseButton variant="primary" @click="goToGallery">Veja a galeria</BaseButton>
         <span class="separator">|</span>
-        <BaseButton variant="secondary">Saiba mais</BaseButton>
+        <BaseButton variant="secondary" @click="goToArticle">Saiba mais</BaseButton>
       </div>
 
       <BaseImage src="/images/leading.jpg" alt="Imagem da entrada do cemitério caboclo" class="image-placeholder" :eager="true"></BaseImage>
