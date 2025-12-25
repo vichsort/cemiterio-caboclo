@@ -10,8 +10,8 @@ const navLinks = [
 ]
 
 const dropdownLinks = [
-  { text: 'Contato', to: '/contato' },
-  { text: 'Artigos', to: '/artigos' }
+  { text: 'Contato', to: '/contact' },
+  { text: 'Artigos', to: '/article' }
 ]
 
 const allMobileLinks = [...navLinks, ...dropdownLinks]
