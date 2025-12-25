@@ -4,14 +4,14 @@ import ExportSection from '@/components/sections/linha-temporal/ExportSection.vu
 </script>
 
 <template>
-  <div class="timeline-page">
+  <main class="main-content">
     <SliderSection />
     <ExportSection />
-  </div>
+  </main>
 </template>
 
 <style scoped>
-.timeline-page {
+.main-content {
   padding-top: 100px; 
 }
 </style>
