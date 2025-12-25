@@ -5,21 +5,33 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 import BaseImage from '@/components/ui/BaseImage.vue'
 
 const router = useRouter()
+const thumbsGlob = import.meta.glob('@/assets/gallery/*.{png,jpg,jpeg,webp}', { 
+  eager: true, 
+  query: { w: 400, format: 'webp', q: 60 } 
+})
 
-const imagesGlob = import.meta.glob('@/assets/gallery/*.{png,jpg,jpeg,webp}', { eager: true })
+const fullGlob = import.meta.glob('@/assets/gallery/*.{png,jpg,jpeg,webp}', { 
+  eager: true, 
+  query: '?url',
+  import: 'default'
+})
 
 const previewImages = computed(() => {
-  return Object.keys(imagesGlob)
-    .slice(0, 4) 
-    .map(path => {
-       return imagesGlob[path].default
-    })
+  const allPaths = Object.keys(fullGlob)
+  const slicedPaths = allPaths.slice(0, 4)
+
+  return slicedPaths.map(path => {
+    return {
+      thumb: thumbsGlob[path].default,
+      full: fullGlob[path]
+    }
+  })
 })
 
 const selectedImage = ref(null)
 
-const openModal = (imgSrc) => {
-  selectedImage.value = imgSrc
+const openModal = (fullUrl) => {
+  selectedImage.value = fullUrl
   document.body.style.overflow = 'hidden'
 }
 
@@ -33,7 +45,7 @@ const goToGallery = () => {
 }
 
 const goToContact = () => {
-  router.push('') 
+  router.push('/contact') 
 }
 </script>
 
@@ -48,13 +60,16 @@ const goToContact = () => {
 
       <div class="grid">
         <div 
-          v-for="(imgSrc, index) in previewImages" 
+          v-for="(item, index) in previewImages" 
           :key="index" 
           class="image-card"
-          @click="openModal(imgSrc)"
+          @click="openModal(item.full)"
         >
-          <BaseImage :src="imgSrc" alt="Prévia da galeria" />
+          <BaseImage :src="item.thumb" alt="Prévia da galeria" />
           
+          <div class="overlay">
+            <span class="icon"></span>
+          </div>
         </div>
       </div>
 
@@ -171,6 +186,7 @@ const goToContact = () => {
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .icon {
@@ -227,6 +243,7 @@ const goToContact = () => {
   max-height: 90vh;
   border-radius: 8px;
   box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  display: block;
 }
 
 .close-btn {
@@ -250,7 +267,6 @@ const goToContact = () => {
   opacity: 0;
 }
 
-/* --- RESPONSIVE --- */
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
