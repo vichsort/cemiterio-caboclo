@@ -103,6 +103,7 @@ const formattedAuthors = computed(() => {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  min-width: 0; 
 }
 
 .card-header {
@@ -134,7 +135,7 @@ const formattedAuthors = computed(() => {
 
 .action-bar {
   display: flex;
-  gap: 1rem;
+  gap: 0.8rem;
   flex-wrap: wrap;
   align-items: center;
   margin-top: auto;
@@ -143,6 +144,7 @@ const formattedAuthors = computed(() => {
 .action-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   padding: 0.6rem 1.2rem;
   border-radius: 6px;
@@ -152,6 +154,9 @@ const formattedAuthors = computed(() => {
   transition: all 0.2s;
   text-decoration: none;
   font-family: inherit;
+  white-space: nowrap;
+  flex: 1 1 auto;
+  max-width: 100%;
 }
 
 .icon {
@@ -163,6 +168,8 @@ const formattedAuthors = computed(() => {
   border: 1px solid transparent;
   color: #555;
   padding-left: 0;
+  flex-grow: 0; 
+  margin-right: auto;
 }
 
 .text-btn:hover, .text-btn.active {
@@ -194,6 +201,7 @@ const formattedAuthors = computed(() => {
 .resume-container {
   margin-top: 1rem;
   overflow: hidden;
+  width: 100%;
 }
 
 .divider {
@@ -234,7 +242,7 @@ const formattedAuthors = computed(() => {
     width: 100%;
     height: 180px;
   }
-  
+
   .action-bar {
     flex-direction: column;
     align-items: stretch;
@@ -242,10 +250,13 @@ const formattedAuthors = computed(() => {
   }
   
   .action-btn {
-    justify-content: center;
-    width: 100%;
     padding-left: 1rem;
+  }
+
+  .text-btn {
+    margin-right: 0;
     border: 1px solid #eee;
+    justify-content: center;
   }
   
   .download-btn, .cite-btn {

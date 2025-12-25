@@ -153,7 +153,6 @@ defineProps({
   }
   
   .action-btn {
-    width: 100%;
     justify-content: center;
   }
 }
