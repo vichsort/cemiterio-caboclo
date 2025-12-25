@@ -1,86 +1,25 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import ArticleCard from '@/components/ui/ArticleCard.vue'
 
-const articles = [
-  {
-    id: 1,
-    image: '/images/articles/portolan.png',
-    title: 'Cemitério Caboclo: Resgate de fontes orais e documentais do início da colonização e da história de Concórdia - SC',
-    date: '22/06/2022',
-    authors: [
-      'Ana Carolina Maltauro',
-      'Stefanie Caroline Bevilaqua',
-      'Alessandra Portolan'
-    ],
-    resume: '', // Conteúdo a ser preenchido futuramente
-    pdfUrl: '/files/portolan.pdf',
-    citations: {
-      ABNT: 'MALTAURO, A. C.; BEVILAQUA, S. C.; PORTOLAN, A. Cemitério Caboclo: Resgate de fontes orais e documentais do início da colonização e da história de Concórdia - SC. Instituto Federal Catarinense, 2022.',
-      APA: 'Maltauro, A. C., Bevilaqua, S. C., & Portolan, A. (2022). Cemitério Caboclo: Resgate de fontes orais e documentais do início da colonização e da história de Concórdia - SC.',
-      BibTeX: '@misc{maltauro2022cemiterio, title={Cemitério Caboclo: Resgate de fontes orais e documentais do início da colonização e da história de Concórdia - SC}, author={Maltauro, Ana Carolina and Bevilaqua, Stefanie Caroline and Portolan, Alessandra}, year={2022}}'
-    }
-  },
-  {
-    id: 2,
-    image: '/images/articles/silvia.png',
-    title: 'Cemitério Caboclo: Resgate de fontes orais e documentais do início da colonização e da história de Concórdia - SC',
-    date: '21/06/2022',
-    authors: [
-      'Ana Carolina Maltauro',
-      'Gustavo Daniel Riffel König',
-      'Sílvia Fernanda Souza Dalla Costa'
-    ],
-    resume: '', // Conteúdo a ser preenchido futuramente
-    pdfUrl: '/files/silvia.pdf',
-    citations: {
-      ABNT: 'MALTAURO, A. C.; KÖNIG, G. D. R.; DALLA COSTA, S. F. S. Cemitério Caboclo: Resgate de fontes orais e documentais do início da colonização e da história de Concórdia - SC. Instituto Federal Catarinense, 2022.',
-      APA: 'Maltauro, A. C., König, G. D. R., & Dalla Costa, S. F. S. (2022). Cemitério Caboclo: Resgate de fontes orais e documentais do início da colonização e da história de Concórdia - SC.',
-      BibTeX: '@misc{maltauro2022cemiterio2, title={Cemitério Caboclo: Resgate de fontes orais e documentais do início da colonização e da história de Concórdia - SC}, author={Maltauro, Ana Carolina and König, Gustavo Daniel Riffel and Dalla Costa, Sílvia Fernanda Souza}, year={2022}}'
-    }
-  },
-  {
-    id: 3,
-    image: '/images/articles/heitor.png',
-    title: 'Site Web para a divulgação dos resultados do projeto Cemitério Caboclo',
-    date: '14/01/2025',
-    authors: [
-      'Álvaro Afonso Schenatto',
-      'Rômulo Nilson Horn',
-      'Maurício Reisdoefer Pereira',
-      'Caroline Guterres Silva',
-      'Heitor Scalco Neto',
-      'Maria Denise Bortolini'
-    ],
-    resume: '', // Conteúdo a ser preenchido futuramente
-    pdfUrl: '/files/heitor.pdf',
-    citations: {
-      ABNT: 'SCHENATTO, Á. A. et al. Site Web para a divulgação dos resultados do projeto Cemitério Caboclo: resgate de fontes orais e documentais do início da colonização e da história de Concórdia - SC. 2025.',
-      APA: 'Schenatto, Á. A., Horn, R. N., Pereira, M. R., Silva, C. G., Scalco Neto, H., & Bortolini, M. D. (2025). Site Web para a divulgação dos resultados do projeto Cemitério Caboclo.',
-      BibTeX: '@misc{schenatto2025site, title={Site Web para a divulgação dos resultados do projeto Cemitério Caboclo}, author={Schenatto, Álvaro Afonso and others}, year={2025}}'
-    }
-  },
-  {
-    id: 4,
-    image: '/images/articles/maria.png',
-    title: 'Relatos sobre Caboclos: um exercício de narrativa histórica a respeito da população Cabocla de Fragosos',
-    date: '06/12/2025',
-    authors: [
-      'Eloá Paola Martins Zanon',
-      'Maria Denise Bortolini',
-      'Sophia Helena Dahmer',
-      'Vitor Marcelo Mignoni'
-    ],
-    resume: '', // Conteúdo a ser preenchido futuramente
-    pdfUrl: '/files/maria.pdf',
-    citations: {
-      ABNT: 'ZANON, E. P. M.; BORTOLINI, M. D.; DAHMER, S. H.; MIGNONI, V. M. Relatos sobre Caboclos: um exercício de narrativa histórica a respeito da população Cabocla de Fragosos e da cidade de Concórdia nos primórdios da colonização. 2025.',
-      APA: 'Zanon, E. P. M., Bortolini, M. D., Dahmer, S. H., & Mignoni, V. M. (2025). Relatos sobre Caboclos: um exercício de narrativa histórica a respeito da população Cabocla de Fragosos.',
-      BibTeX: '@misc{zanon2025relatos, title={Relatos sobre Caboclos: um exercício de narrativa histórica a respeito da população Cabocla de Fragosos}, author={Zanon, Eloá Paola Martins and Bortolini, Maria Denise and Dahmer, Sophia Helena and Mignoni, Vitor Marcelo}, year={2025}}'
-    }
-  }
-]
+// Estado dos artigos
+const articles = ref([])
+const isLoading = ref(true)
 
+// --- FETCH DATA ---
+const fetchData = async () => {
+  try {
+    const response = await fetch('/contents/articles.json')
+    if (!response.ok) throw new Error('Erro ao carregar artigos')
+    articles.value = await response.json()
+  } catch (error) {
+    console.error(error)
+  } finally {
+    isLoading.value = false
+  }
+}
+
+// --- LOGICA MODAL DE CITAÇÃO ---
 const isModalOpen = ref(false)
 const activeCitationData = ref(null)
 const activeTab = ref('ABNT')
@@ -115,6 +54,11 @@ const copyToClipboard = async () => {
     console.error('Falha ao copiar', err)
   }
 }
+
+// Inicializa
+onMounted(() => {
+  fetchData()
+})
 </script>
 
 <template>
@@ -126,7 +70,11 @@ const copyToClipboard = async () => {
       </p>
     </div>
 
-    <div class="articles-list">
+    <div v-if="isLoading" class="loading-state">
+      <p>Carregando produções acadêmicas...</p>
+    </div>
+
+    <div v-else class="articles-list">
       <ArticleCard 
         v-for="article in articles"
         :key="article.id"
