@@ -98,7 +98,7 @@ import BaseImage from '@/components/ui/BaseImage.vue';
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .images-column {
     flex-direction: column;
   }

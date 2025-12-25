@@ -188,7 +188,7 @@ const moreLinks = [
   font-size: 0.8rem;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .footer-container {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -199,7 +199,7 @@ const moreLinks = [
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .project-identity {
     flex-direction: column;
     align-items: center;

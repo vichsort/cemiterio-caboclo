@@ -341,14 +341,14 @@ input:focus, select:focus, textarea:focus {
 .fade-enter-active, .fade-leave-active { transition: opacity 0.5s; }
 .fade-enter-from, .fade-leave-to { opacity: 0; }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .container {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .contact-form {
     grid-template-columns: 1fr;
     padding: 1.5rem;

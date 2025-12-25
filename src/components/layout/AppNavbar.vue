@@ -370,7 +370,7 @@ onUnmounted(() => {
 .slide-right-enter-active, .slide-right-leave-active { transition: transform 0.3s ease-out; }
 .slide-right-enter-from, .slide-right-leave-to { transform: translateX(100%); }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .desktop-nav {
     display: none;
   }
