@@ -227,6 +227,10 @@ const closeModal = () => {
 }
 
 @media (max-width: 768px) {
+  .modal-overlay {
+    padding: 0;
+  }
+  
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
   }

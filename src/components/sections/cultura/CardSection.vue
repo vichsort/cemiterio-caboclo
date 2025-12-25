@@ -168,14 +168,13 @@ const closeModal = () => {
   margin: 0 auto;
 }
 
-/* --- ESTILOS DO MODAL --- */
 .modal-backdrop {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.85); /* Fundo escuro */
+  background-color: rgba(0, 0, 0, 0.85);
   z-index: 2000;
   display: flex;
   justify-content: center;
@@ -264,6 +263,10 @@ const closeModal = () => {
 }
 
 @media (max-width: 768px) {
+  .modal-backdrop {
+    width: auto;
+  }
+
   .modal-image-box {
     height: 200px;
   }

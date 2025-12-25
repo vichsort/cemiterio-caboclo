@@ -274,6 +274,10 @@ const goToContact = () => {
 }
 
 @media (max-width: 600px) {
+  .modal-backdrop {
+    width: auto;
+  }
+
   .grid {
     grid-template-columns: 1fr;
     max-width: 300px;

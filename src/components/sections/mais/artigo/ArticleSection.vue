@@ -208,7 +208,6 @@ onMounted(() => {
   margin-bottom: 1.5rem;
 }
 
-/* --- TABS SYSTEM --- */
 .tabs-header {
   display: flex;
   gap: 0.5rem;
@@ -286,5 +285,11 @@ onMounted(() => {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .modal-backdrop {
+    width: auto;
+  }
 }
 </style>

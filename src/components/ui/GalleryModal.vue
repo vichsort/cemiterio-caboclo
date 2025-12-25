@@ -51,4 +51,10 @@ defineEmits(['close'])
 .fade-leave-to {
   opacity: 0;
 }
+
+@media (max-width: 768px) {
+  .modal-backdrop {
+    width: auto;
+  }
+}
 </style>
